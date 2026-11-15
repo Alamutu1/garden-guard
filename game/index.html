@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Garden Guard — a sunny tower defence</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="wrap">
+  <header id="hud">
+    <span id="brand">🌻 Garden Guard</span>
+    <span id="hud-nectar" class="pill">🍯 200</span>
+    <span id="hud-lives" class="pill">❤️ 20</span>
+    <span id="hud-wave" class="pill">Wave 1/10</span>
+    <span id="hud-foes" class="pill">🐛 —</span>
+    <span id="hud-score" class="pill">⭐ 0</span>
+    <span class="spacer"></span>
+    <button id="btn-pause" class="mini" type="button">⏸ Pause (P)</button>
+    <button id="btn-mute" class="mini" type="button">🔊 Sound (M)</button>
+    <button id="btn-restart" class="mini" type="button">↻ Restart (R)</button>
+  </header>
+
+  <div id="stage">
+    <canvas id="game" width="960" height="640" aria-label="Garden Guard: plant flower-towers along the path and stop the pests reaching the gate"></canvas>
+
+    <div id="selected-panel" class="panel hidden">
+      <div id="sel-name">Sunflower ★</div>
+      <div id="sel-stats"></div>
+      <button id="btn-upgrade" type="button">⬆ Upgrade</button>
+      <button id="btn-sell" type="button">💰 Sell</button>
+    </div>
+
+    <div id="overlay-title" class="overlay">
+      <h1>🌻 Garden Guard 🐝</h1>
+      <p class="hook">Plant flower-towers, command the bees, and hold 10 waves to save the harvest.</p>
+      <div class="howto">
+        <p><b>🌱 Plant:</b> pick a flower below (or keys 1 / 2 / 3), then click a grass cell.</p>
+        <p><b>🐛 Defend:</b> pests follow the cream path to the gate — each one through costs a life.</p>
+        <p><b>🌼 Cross-pollinate:</b> plant different flowers side by side and they grow stronger together. All three together make a Rainbow Bed!</p>
+        <p><b>🐝 Swarm:</b> press B to loose the bees when the garden is overrun.</p>
+        <p><b>🏆 Win:</b> clear all 10 waves. Lose all 20 lives and the harvest is gone.</p>
+      </div>
+      <button id="btn-start" class="big" type="button">▶ Start the Garden</button>
+      <p class="keys">Space send wave · B bee swarm · P pause · M mute · R restart</p>
+    </div>
+
+    <div id="overlay-paused" class="overlay hidden">
+      <h1>⏸ Paused</h1>
+      <p class="hook">The bees are holding their breath.</p>
+      <button id="btn-resume" class="big" type="button">▶ Resume (P)</button>
+    </div>
+
+    <div id="overlay-won" class="overlay hidden">
+      <h1>🏆 Harvest Saved!</h1>
+      <p class="hook">Ten waves held — the garden blooms another day.</p>
+      <p id="won-stats" class="stats"></p>
+      <button id="btn-again-won" class="big" type="button">↻ Play Again (R)</button>
+    </div>
+
+    <div id="overlay-lost" class="overlay hidden">
+      <h1>🥀 Garden Overrun</h1>
+      <p class="hook">The pests reached the gate and the harvest is lost.</p>
+      <p id="lost-stats" class="stats"></p>
+      <button id="btn-again-lost" class="big" type="button">↻ Try Again (R)</button>
+    </div>
+  </div>
+
+  <footer id="toolbar">
+    <button id="btn-sunflower" class="tower" type="button">🌻 Sunflower <b>50 🍯</b><span>Fast · long reach · 1</span></button>
+    <button id="btn-rose" class="tower" type="button">🌹 Rose <b>100 🍯</b><span>Splash damage · 2</span></button>
+    <button id="btn-lavender" class="tower" type="button">💜 Lavender <b>150 🍯</b><span>Slows pests · 3</span></button>
+    <button id="btn-wave" class="action" type="button">▶ Send Wave 1 (Space)</button>
+    <button id="btn-swarm" class="action swarm" type="button">🐝 Bee Swarm (B)</button>
+  </footer>
+  <p id="status" role="status" aria-live="polite"></p>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
